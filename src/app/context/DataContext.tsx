@@ -137,17 +137,12 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       }
     });
     
-    toast.info('Clique em "Sincronizar DB" para salvar os dados no banco de dados', {
+    toast('Clique em "Sincronizar DB" para salvar os dados no banco de dados', {
       duration: 5000,
       style: {
         background: '#373737',
         color: '#fff',
-        border: '1px solid #007bff'
       },
-      iconTheme: {
-        primary: '#007bff',
-        secondary: '#fff'
-      }
     });
   };
 
@@ -245,17 +240,12 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
               }
             });
             
-            toast.info('Clique em "Sincronizar DB" para salvar os dados no banco de dados', {
+            toast('Clique em "Sincronizar DB" para salvar os dados no banco de dados', {
               duration: 5000,
               style: {
                 background: '#373737',
                 color: '#fff',
-                border: '1px solid #007bff'
               },
-              iconTheme: {
-                primary: '#007bff',
-                secondary: '#fff'
-              }
             });
           } catch (error) {
             console.error('Erro ao processar arquivo:', error);
