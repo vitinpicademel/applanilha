@@ -1,0 +1,70 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "windows"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo de usuário para autenticação e gerenciamento de acessos
+// Roles: MASTER (superadmin), GESTOR (gerente), CORRETOR (usuário básico)
+model User {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String    // Nome completo do usuário
+  email     String    @unique // Email único usado para login
+  password  String    // Senha armazenada com hash
+  role      String    // Nível de acesso: MASTER, GESTOR, CORRETOR
+  teamId    String?   // Referência à equipe (opcional)
+  managerId String?   // ID do gestor responsável (para CORRETOR)
+  lastLogin DateTime? // Registro do último acesso
+  active    Boolean   @default(true) // Status do usuário (ativo/inativo)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Índices para melhorar consultas frequentes
+  @@index([role], name: "role_idx")
+  @@index([managerId], name: "manager_idx")
+  @@index([active], name: "active_idx")
+}
+
+// Modelo para dados importados de Excel
+model ExcelData {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  corretor       String   // Nome do corretor
+  parceriaGestor String   @default("NÃO") // Indica se há parceria com gestor
+  teamId         String   // ID da equipe associada
+  gestorId       String?  @db.ObjectId // ID do gestor responsável
+  active         Boolean  @default(true) // Status do registro (ativo/inativo)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // Índices para melhorar consultas frequentes
+  @@index([corretor], name: "corretor_idx")
+  @@index([teamId], name: "teamId_idx")
+  @@index([gestorId], name: "gestorId_idx")
+}
+
+// Modelo para registro de logs operacionais 
+model SystemLog {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String?  @db.ObjectId // Usuario que realizou a ação (opcional)
+  action    String   // Tipo de ação: LOGIN, CREATE, UPDATE, DELETE, etc.
+  entity    String   // Entidade afetada: USER, EXCEL_DATA, etc.
+  details   String   // Detalhes da operação em formato JSON
+  success   Boolean  // Se a operação foi bem-sucedida
+  ip        String?  // Endereço IP de origem
+  userAgent String?  // Navegador/dispositivo
+  createdAt DateTime @default(now())
+
+  // Índices para facilitar análise de logs
+  @@index([action], name: "action_idx")
+  @@index([entity], name: "entity_idx")
+  @@index([userId], name: "userId_idx")
+  @@index([success], name: "success_idx")
+  @@index([createdAt], name: "createdAt_idx")
+} 

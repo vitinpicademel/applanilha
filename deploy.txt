@@ -1,0 +1,73 @@
+GUIA DE DEPLOY - SISTEMA DE REGISTRO DE USUÁRIOS
+
+1. ARQUIVOS PARA ATUALIZAR NO SERVIDOR:
+
+Backend (pasta /public_html/api/):
+
+a) Arquivo: /api/users/create.php
+- Substitua completamente o arquivo existente pelo novo
+- Permissões: 644 (rw-r--r--)
+
+b) Arquivo: /api/test/test_register.php
+- Faça upload do novo arquivo de teste
+- Permissões: 644 (rw-r--r--)
+
+Frontend (pasta /public_html/):
+
+a) Arquivo: src/app/context/AuthContext.tsx
+- Substitua completamente o arquivo existente pelo novo
+- Certifique-se que a constante API_BASE_URL está correta para produção
+
+2. PASSOS PARA O DEPLOY:
+
+1) Faça backup dos arquivos existentes antes de substituí-los
+   - Baixe uma cópia de /api/users/create.php
+   - Baixe uma cópia de src/app/context/AuthContext.tsx
+
+2) Upload dos arquivos backend:
+   - Acesse o cPanel da Hostgator
+   - Vá para o File Manager
+   - Navegue até /public_html/api/users/
+   - Faça upload do novo create.php
+   - Navegue até /public_html/api/test/
+   - Faça upload do novo test_register.php
+
+3) Upload dos arquivos frontend:
+   - Navegue até a pasta do projeto React
+   - Faça upload do novo AuthContext.tsx
+   - Execute o build do projeto:
+     ```
+     npm run build
+     ```
+   - Faça upload dos arquivos gerados na pasta build/
+
+4) Teste de verificação:
+   - Acesse: https://seudominio.com.br/api/test/test_register.php
+   - Verifique se o teste é executado com sucesso
+   - Tente criar um novo usuário pelo frontend
+   - Verifique os logs no console do navegador (F12)
+
+3. ROLLBACK (em caso de problemas):
+
+1) Se houver problemas, restaure os arquivos de backup:
+   - Restaure o create.php original
+   - Restaure o AuthContext.tsx original
+   - Refaça o build do frontend
+
+2) Verifique os logs de erro:
+   - Acesse o cPanel > Logs
+   - Verifique error_log para mensagens de erro PHP
+
+4. VERIFICAÇÃO PÓS-DEPLOY:
+
+1) Teste o registro de um novo usuário
+2) Verifique se o usuário aparece no banco de dados
+3) Tente fazer login com o novo usuário
+4) Verifique se os logs estão sendo gerados corretamente
+
+5. CONTATO PARA SUPORTE:
+
+Em caso de problemas durante o deploy, você pode:
+1) Verificar os logs de erro no cPanel
+2) Executar o arquivo de teste test_register.php
+3) Verificar o console do navegador para erros do frontend 

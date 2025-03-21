@@ -1,0 +1,26 @@
+[18-Mar-2025 16:06:49 America/Fortaleza] PHP Warning:  Undefined variable $conn in /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php on line 7
+[18-Mar-2025 16:06:49 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php on line 7
+[18-Mar-2025 16:06:54 America/Fortaleza] PHP Warning:  Undefined variable $conn in /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php on line 7
+[18-Mar-2025 16:06:54 America/Fortaleza] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:7
+Stack trace:
+#0 {main}
+  thrown in /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php on line 7
+[18-Mar-2025 16:25:56 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 2
+[18-Mar-2025 16:25:56 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 3
+[18-Mar-2025 16:25:56 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 4
+[18-Mar-2025 16:25:56 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 5
+[18-Mar-2025 16:28:25 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 2
+[18-Mar-2025 16:28:25 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 3
+[18-Mar-2025 16:28:25 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 4
+[18-Mar-2025 16:28:25 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 5
+[18-Mar-2025 16:29:30 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 2
+[18-Mar-2025 16:29:30 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 3
+[18-Mar-2025 16:29:30 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 4
+[18-Mar-2025 16:29:30 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 5
+[18-Mar-2025 16:30:27 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 2
+[18-Mar-2025 16:30:27 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 3
+[18-Mar-2025 16:30:27 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 4
+[18-Mar-2025 16:30:27 America/Fortaleza] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home2/donnan87/cv.donnanegociacoes.com.br/api/test.php:5) in /home2/donnan87/cv.donnanegociacoes.com.br/api/config/database.php on line 5

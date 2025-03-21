@@ -1,0 +1,30 @@
+==== Como iniciar o servidor ====
+
+1. Abra o PowerShell ou o Prompt de Comando
+
+2. Navegue até a pasta do projeto:
+   cd C:\caminho\para\o\projeto
+
+3. Para iniciar em modo de desenvolvimento (com recarregamento automático):
+   npm run dev
+
+4. Para iniciar em modo de produção:
+   npm run start:prod
+
+==== Observações ====
+
+- O modo de desenvolvimento (npm run dev) é ideal para desenvolvimento
+- O modo de produção (npm run start:prod) é mais rápido e deve ser usado para a versão final
+
+==== Solução de problemas ====
+
+Se o servidor não iniciar corretamente, tente:
+
+1. Limpar o build anterior:
+   Remove-Item -Recurse -Force .next
+
+2. Reconstruir a aplicação:
+   npm run build
+
+3. Iniciar novamente:
+   npm run start:prod 
