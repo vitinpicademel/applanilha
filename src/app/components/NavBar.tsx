@@ -2,8 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { FiLogOut, FiUsers, FiUserPlus, FiHome, FiDatabase, FiMenu, FiList, FiSettings } from 'react-icons/fi';
+import { FiLogOut, FiUsers, FiUserPlus, FiHome, FiDatabase, FiMenu, FiList, FiSettings, FiUser, FiActivity } from 'react-icons/fi';
 import { useAuth } from '../context/AuthContext';
+import type { UserRole } from '@/app/api/auth/auth.config';
+
+const ADMIN: UserRole = 'ADMIN';
+const MASTER: UserRole = 'MASTER';
 
 export default function NavBar() {
   const { user, isAuthenticated, logout } = useAuth();
@@ -38,7 +42,7 @@ export default function NavBar() {
                   <FiHome className="mr-1" />
                   Home
                 </Link>
-                {user?.role === 'ADMIN' && (
+                {(user?.role === ADMIN || user?.role === MASTER) && (
                   <>
                     <Link 
                       href="/gerenciar-usuarios" 
@@ -72,7 +76,7 @@ export default function NavBar() {
                       href="/admin/status" 
                       className="text-gray-600 hover:text-blue-500 flex items-center mr-4"
                     >
-                      <FiSettings className="mr-1" />
+                      <FiActivity className="mr-1" />
                       Status
                     </Link>
                   </>
@@ -107,7 +111,7 @@ export default function NavBar() {
                 <FiHome className="mr-2" />
                 Home
               </Link>
-              {user?.role === 'ADMIN' && (
+              {(user?.role === ADMIN || user?.role === MASTER) && (
                 <>
                   <Link 
                     href="/gerenciar-usuarios" 
@@ -146,7 +150,7 @@ export default function NavBar() {
                     className="px-4 py-2 text-gray-600 hover:bg-gray-100 flex items-center"
                     onClick={() => setIsOpen(false)}
                   >
-                    <FiSettings className="mr-2" />
+                    <FiActivity className="mr-2" />
                     Status
                   </Link>
                 </>
