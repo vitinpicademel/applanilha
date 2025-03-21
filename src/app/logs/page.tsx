@@ -6,6 +6,8 @@ import { FiRefreshCw, FiList, FiFilter, FiInfo, FiAlertTriangle, FiCheckCircle, 
 import { toast } from 'react-toastify';
 import { formatDistanceToNow } from 'date-fns';
 import { pt } from 'date-fns/locale';
+import Link from 'next/link';
+import type { UserRole } from '@/app/api/auth/auth.config';
 
 interface LogEntry {
   id: string;
@@ -18,6 +20,9 @@ interface LogEntry {
   userAgent: string | null;
   createdAt: string;
 }
+
+const ADMIN: UserRole = 'ADMIN';
+const MASTER: UserRole = 'MASTER';
 
 export default function LogsPage() {
   const { user, isAuthenticated } = useAuth();
@@ -73,7 +78,7 @@ export default function LogsPage() {
 
   // Carregar logs ao iniciar a página ou quando os filtros mudarem
   useEffect(() => {
-    if (isAuthenticated && user?.role === 'ADMIN') {
+    if (isAuthenticated && (user?.role === ADMIN || user?.role === MASTER)) {
       fetchLogs();
     }
   }, [isAuthenticated, user, filter]);
@@ -102,12 +107,18 @@ export default function LogsPage() {
   };
 
   // Verificar autorização
-  if (!isAuthenticated || user?.role !== 'ADMIN') {
+  if (!isAuthenticated || (user?.role !== ADMIN && user?.role !== MASTER)) {
     return (
-      <div className="container mx-auto p-4">
-        <div className="bg-red-50 p-4 rounded-md border border-red-300">
-          <h1 className="text-xl font-bold text-red-700 mb-2">Acesso Restrito</h1>
-          <p className="text-red-600">Você não tem permissão para acessar esta página. Este incidente será registrado.</p>
+      <div className="container mx-auto px-4 py-8">
+        <div className="bg-red-50 p-6 rounded-md border border-red-300">
+          <h1 className="text-xl font-bold text-red-700 flex items-center mb-2">
+            <FiAlertTriangle className="mr-2" />
+            Acesso Restrito
+          </h1>
+          <p className="text-red-600 mb-4">Você não tem permissão para acessar esta página.</p>
+          <Link href="/" className="text-blue-600 hover:underline">
+            Voltar para a página inicial
+          </Link>
         </div>
       </div>
     );
