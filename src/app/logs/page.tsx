@@ -41,7 +41,7 @@ export default function LogsPage() {
 
   // Buscar logs do sistema
   const fetchLogs = async () => {
-    if (!isAuthenticated || user?.role !== 'ADMIN') {
+    if (!isAuthenticated || (user?.role !== ADMIN && user?.role !== MASTER)) {
       toast.error('Acesso não autorizado');
       return;
     }
