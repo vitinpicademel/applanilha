@@ -5,6 +5,10 @@ import { useAuth } from '@/app/context/AuthContext';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { FiDatabase, FiUser, FiFileText, FiRefreshCw, FiList, FiAlertTriangle, FiCheckCircle, FiSettings } from 'react-icons/fi';
+import type { UserRole } from '@/app/api/auth/[...nextauth]/route';
+
+const ADMIN: UserRole = 'ADMIN';
+const MASTER: UserRole = 'MASTER';
 
 export default function SystemStatusPage() {
   const { user, isAuthenticated } = useAuth();
@@ -83,13 +87,13 @@ export default function SystemStatusPage() {
 
   // Verificar status ao carregar a página
   useEffect(() => {
-    if (isAuthenticated && user?.role === 'ADMIN' || user?.role === 'MASTER') {
+    if (isAuthenticated && (user?.role === ADMIN || user?.role === MASTER)) {
       checkSystemStatus();
     }
   }, [isAuthenticated, user, refreshCount]);
 
   // Verificar permissão
-  if (!isAuthenticated || (user?.role !== 'ADMIN' && user?.role !== 'MASTER')) {
+  if (!isAuthenticated || (user?.role !== ADMIN && user?.role !== MASTER)) {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="bg-red-50 p-6 rounded-md border border-red-300">

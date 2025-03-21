@@ -5,24 +5,26 @@ import bcrypt from 'bcrypt';
 import { AuthOptions } from 'next-auth';
 import { DefaultSession } from 'next-auth';
 
+export type UserRole = 'USER' | 'ADMIN' | 'MASTER';
+
 declare module "next-auth" {
   interface User {
-    role?: string;
+    role?: UserRole;
   }
   interface Session {
     user: {
-      role?: string;
+      role?: UserRole;
     } & DefaultSession["user"]
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
-    role?: string;
+    role?: UserRole;
   }
 }
 
-const authOptions: AuthOptions = {
+export const authOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -59,7 +61,7 @@ const authOptions: AuthOptions = {
             id: user.id,
             email: user.email,
             name: user.name,
-            role: user.role,
+            role: user.role as UserRole,
           };
         } catch (error) {
           console.error('Erro na autenticação:', error);
