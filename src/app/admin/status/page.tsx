@@ -5,7 +5,7 @@ import { useAuth } from '@/app/context/AuthContext';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { FiDatabase, FiUser, FiFileText, FiRefreshCw, FiList, FiAlertTriangle, FiCheckCircle, FiSettings } from 'react-icons/fi';
-import type { UserRole } from '@/app/api/auth/[...nextauth]/route';
+import type { UserRole } from '@/app/api/auth/auth.config';
 
 const ADMIN: UserRole = 'ADMIN';
 const MASTER: UserRole = 'MASTER';
